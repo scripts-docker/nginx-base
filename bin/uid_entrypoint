@@ -6,6 +6,7 @@ if ! whoami &> /dev/null; then
 fi
 
 echo "Copiando variável de ambiente ${AMBIENTE}"
+rm /usr/share/nginx/html/variaveis.json
 cp /usr/share/nginx/html/variaveis/${AMBIENTE}.json /usr/share/nginx/html/variaveis.json
 cat /usr/share/nginx/html/variaveis.json
 exec "$@"
