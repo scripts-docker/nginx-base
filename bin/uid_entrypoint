@@ -1,8 +1,11 @@
 #!/bin/sh
-echo whoami
 if ! whoami &> /dev/null; then
   if [ -w /etc/passwd ]; then
     echo "${USER_NAME:-default}:x:$(id -u):0:${USER_NAME:-default} user:${HOME}:/sbin/nologin" >> /etc/passwd
   fi
 fi
+
+echo "Copiando variável de ambiente ${AMBIENTE}"
+cp /usr/share/nginx/html/variaveis/${AMBIENTE}.json /usr/share/nginx/html/variaveis.json
+cat /usr/share/nginx/html/variaveis.json
 exec "$@"
